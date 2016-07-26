@@ -4,7 +4,7 @@
     "name": "PokemonGo Map",
     "homepage": "https://github.com/AHAAAAAAA/PokemonGo-Map/",
     "description": "Find all the pokemon in your area... and more!",
-    "logo": "https://raw.githubusercontent.com/AHAAAAAAA/PokemonGo-Map/master/static/appicons/120x120.png",
+    "logo": "https://raw.githubusercontent.com/sych74/PokemonGo-Map-in-Cloud/master/images/icon-70x70.png",
     "settings": {
         {
           "name": "username",
@@ -88,7 +88,7 @@
             "nodeGroup": "cp",
             "docker": {
               "image": "crims0n/pokemongo-map:develop",
-              "cmd": "-a ptc -u \"${settings.username}\" -p \"${settings.password}\" -l \"${settings.location}\" -st \"${settings.stepsAway}\" -k \"${settings.gmapKey}\" --dbtype mysql --db-name \"${settings.dbname}\" --db-user \"${settings.dbuser}\" --db-pass \"${settings.dbpassword}\" --db-host \"${settings.dbhost}\" -P 80 -t \"${settings.threads}\""
+              "cmd": "-a ptc -u \"${settings.username}\" -p \"${settings.password}\" -l \"${settings.location}\" -st \"${settings.stepsAway}\" -k \"${settings.gmapKey}\" --db-type mysql --db-name \"${settings.dbname}\" --db-user \"${settings.dbuser}\" --db-pass \"${settings.dbpassword}\" --db-host \"${settings.dbhost}\" -P 80 -t \"${settings.threads}\""
             }
           }
         ]
