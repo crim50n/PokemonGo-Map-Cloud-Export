@@ -1,0 +1,170 @@
+{
+  "jpsType": "install",
+  "application": {
+    "name": "PokemonGo Map",
+    "homepage": "https://github.com/AHAAAAAAA/PokemonGo-Map/",
+    "description": "Find all the pokemon in your area... and more!",
+    "logo": "https://raw.githubusercontent.com/sych74/PokemonGo-Map-in-Cloud/master/images/icon-70x70.png",
+    "settings": {
+      "fields": [
+        {
+          "default": "demo",
+          "type": "radio-fieldset",
+          "values": {
+            "demo" : "Default Demo Account",
+            "google": "Your Google Account",
+            "pkmclb": "Your Pkmn Club Account"
+          },
+          "name": "account",
+          "showIf": {
+            "demo": [
+              {
+                "name": "username",
+                "caption": "Google User",
+                "type": "string",
+                "inputType": "hidden",
+                "default": "pokemonemail74@gmail.com",
+                "required": "true"
+              },
+              {
+                "name": "password",
+                "caption": "Google Password",
+                "type": "string",
+                "inputType": "hidden",
+                "default": "2l2VP20Js8",
+                "required": "true"
+              },
+              {
+                "name": "auth",
+                "type": "string",
+                "inputType": "hidden",
+                "default": "google",
+                "required": "true" 
+              }
+            ],
+            "google": [
+              {
+                "name": "username",
+                "caption": "Google User",
+                "type": "string",
+                "inputType": "string",
+                "default": "",
+                "required": "true"
+              },
+              {
+                "name": "password",
+                "caption": "Google Password",
+                "type": "string",
+                "inputType": "password",
+                "default": "",
+                "required": "true"
+              },
+              {
+                "name": "auth",
+                "type": "string",
+                "inputType": "hidden",
+                "default": "google",
+                "required": "true" 
+              }
+            ],
+            "pkmclb": [
+              {
+                "name": "username",
+                "caption": "Pkmn Club User",
+                "type": "string",
+                "default": "",
+                "required": "true"
+              },
+              {
+                "name": "password",
+                "caption": "Pkmn Club Pswd",
+                "type": "string",
+                "inputType": "password",
+                "default": "",
+                "required": "true"
+              },
+              {
+                "name": "auth",
+                "type": "string",
+                "inputType": "hidden",
+                "default": "ptc",
+                "required": "true"
+              }
+            ]
+          }
+        },
+        {
+          "name": "location",
+          "caption": "Your Location",
+          "type": "string",
+          "default": "Moscow",
+          "required": "true"
+        },
+        {
+          "name": "stepsAway",
+          "caption": "Steps Away",
+          "type": "string",
+          "default": "10",
+          "required": "true"
+        },
+        {
+          "name": "threads",
+          "caption": "Threads",
+          "type": "string",
+          "default": "1",
+          "required": "false"
+        },
+        {
+          "name": "gmapKey",
+          "caption": "Google Map API Key",
+          "type": "string",
+          "default": "AIzaSyDwvxkpEpEUzXR7qKFAQjYNmOQqkYS2NBU",
+          "required": "true"
+        },
+        {
+          "name": "dbname",
+          "caption": "Database name",
+          "type": "string",
+          "default": "",
+          "required": "true"
+        },
+        {
+          "name": "dbuser",
+          "caption": "Database user",
+          "type": "string",
+          "default": "",
+          "required": "true"
+        },
+        {
+          "name": "dbpass",
+          "caption": "Database password",
+          "type": "string",
+          "default": "",
+          "required": "true"
+        },
+        {
+          "name": "dbhost",
+          "caption": "Database hostname",
+          "type": "string",
+          "default": "",
+          "required": "true"
+        }
+      ]
+    },
+    "env": {
+      "displayName": "Map Server",
+      "topology": {
+        "nodes": [
+          {
+            "cloudlets": 16,
+            "nodeGroup": "cp",
+            "docker": {
+              "image": "crims0n/pokemongo-map",
+              "cmd": "-a ${settings.auth} -u \"${settings.username}\" -p \"${settings.password}\" -l \"${settings.location}\" -st \"${settings.stepsAway}\" -k \"${settings.gmapKey}\" --dbtype mysql --db-name \"${settings.dbname}\" --db-user \"${settings.dbuser}\" --db-pass \"${settings.dbpassword}\" --db-host \"${settings.dbhost}\" -P 80 -t \"${settings.threads}\""
+            }
+          }
+        ]
+      }
+    }
+  }
+}
