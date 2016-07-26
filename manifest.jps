@@ -4,94 +4,22 @@
     "name": "PokemonGo Map",
     "homepage": "https://github.com/AHAAAAAAA/PokemonGo-Map/",
     "description": "Find all the pokemon in your area... and more!",
-    "logo": "https://raw.githubusercontent.com/sych74/PokemonGo-Map-in-Cloud/master/images/icon-70x70.png",
+    "logo": "https://raw.githubusercontent.com/AHAAAAAAA/PokemonGo-Map/master/static/appicons/120x120.png",
     "settings": {
-      "fields": [
         {
-          "default": "demo",
-          "type": "radio-fieldset",
-          "values": {
-            "demo" : "Default Demo Account",
-            "google": "Your Google Account",
-            "pkmclb": "Your Pkmn Club Account"
-          },
-          "name": "account",
-          "showIf": {
-            "demo": [
-              {
-                "name": "username",
-                "caption": "Google User",
-                "type": "string",
-                "inputType": "hidden",
-                "default": "pokemonemail74@gmail.com",
-                "required": "true"
-              },
-              {
-                "name": "password",
-                "caption": "Google Password",
-                "type": "string",
-                "inputType": "hidden",
-                "default": "2l2VP20Js8",
-                "required": "true"
-              },
-              {
-                "name": "auth",
-                "type": "string",
-                "inputType": "hidden",
-                "default": "google",
-                "required": "true" 
-              }
-            ],
-            "google": [
-              {
-                "name": "username",
-                "caption": "Google User",
-                "type": "string",
-                "inputType": "string",
-                "default": "",
-                "required": "true"
-              },
-              {
-                "name": "password",
-                "caption": "Google Password",
-                "type": "string",
-                "inputType": "password",
-                "default": "",
-                "required": "true"
-              },
-              {
-                "name": "auth",
-                "type": "string",
-                "inputType": "hidden",
-                "default": "google",
-                "required": "true" 
-              }
-            ],
-            "pkmclb": [
-              {
-                "name": "username",
-                "caption": "Pkmn Club User",
-                "type": "string",
-                "default": "",
-                "required": "true"
-              },
-              {
-                "name": "password",
-                "caption": "Pkmn Club Pswd",
-                "type": "string",
-                "inputType": "password",
-                "default": "",
-                "required": "true"
-              },
-              {
-                "name": "auth",
-                "type": "string",
-                "inputType": "hidden",
-                "default": "ptc",
-                "required": "true"
-              }
-            ]
-          }
+          "name": "username",
+          "caption": "Pokemon Club User",
+          "type": "string",
+          "default": "",
+          "required": "true"
+        },
+        {
+          "name": "password",
+          "caption": "Pokemon Club Password",
+          "type": "string",
+          "inputType": "password",
+          "default": "",
+          "required": "true"
         },
         {
           "name": "location",
@@ -159,8 +87,8 @@
             "cloudlets": 16,
             "nodeGroup": "cp",
             "docker": {
-              "image": "crims0n/pokemongo-map",
-              "cmd": "-a ${settings.auth} -u \"${settings.username}\" -p \"${settings.password}\" -l \"${settings.location}\" -st \"${settings.stepsAway}\" -k \"${settings.gmapKey}\" --dbtype mysql --db-name \"${settings.dbname}\" --db-user \"${settings.dbuser}\" --db-pass \"${settings.dbpassword}\" --db-host \"${settings.dbhost}\" -P 80 -t \"${settings.threads}\""
+              "image": "crims0n/pokemongo-map:develop",
+              "cmd": "-a ptc -u \"${settings.username}\" -p \"${settings.password}\" -l \"${settings.location}\" -st \"${settings.stepsAway}\" -k \"${settings.gmapKey}\" --dbtype mysql --db-name \"${settings.dbname}\" --db-user \"${settings.dbuser}\" --db-pass \"${settings.dbpassword}\" --db-host \"${settings.dbhost}\" -P 80 -t \"${settings.threads}\""
             }
           }
         ]
